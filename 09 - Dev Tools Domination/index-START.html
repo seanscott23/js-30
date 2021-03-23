@@ -1,46 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Console Tricks!</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Console Tricks!</title>
+  </head>
+  <body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+    <script>
+      const dogs = [
+        { name: "Snickers", age: 2 },
+        { name: "hugo", age: 8 },
+      ];
 
-  <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+      function makeGreen() {
+        const p = document.querySelector("p");
+        p.style.color = "#BADA55";
+        p.style.fontSize = "50px";
+      }
 
-    function makeGreen() {
-      const p = document.querySelector('p');
-      p.style.color = '#BADA55';
-      p.style.fontSize = '50px';
-    }
+      // Regular
+      console.log("hello");
+      // Interpolated
+      console.log(`hello these are ${dogs}`);
+      // Styled
+      console.log("%c i am some great text", "font-size: 50px");
+      // warning!
+      console.war("oh no");
+      // Error :|
+      console.error("bad error here");
+      // Info
+      console.info("crocodiles eat 3-4 people per year");
+      // Testing
+      const p = document.querySelector("p");
+      console.assert(p.classList.contains("whoa"), "that is wrong");
+      // clearing
+      console.clear();
+      // Viewing DOM Elements
+      console.dir(p); ///very helpful
+      // Grouping together
+      dogs.forEach((dog) => {
+        console.group(`${dog.name}`);
+        console.log(`this is ${dog.name}`);
+        console.log(`this is ${dog.age}`);
+      });
+      console.groupEnd(`${dog.name}`);
+      // counting
+      console.count("wes");
+      // timing
+      console.time("fetching data");
+      fetch("https://api.github.com")
+        .then((data) => data.json())
+        .then((data) => {
+          console.timeEnd("fetching data");
+          console.log(data);
+        });
 
-    // Regular
-
-    // Interpolated
-
-    // Styled
-
-    // warning!
-
-    // Error :|
-
-    // Info
-
-    // Testing
-
-    // clearing
-
-    // Viewing DOM Elements
-
-    // Grouping together
-
-    // counting
-
-    // timing
-
-  </script>
-</body>
+      console.table(); //displays everything in a nice table
+    </script>
+  </body>
 </html>
